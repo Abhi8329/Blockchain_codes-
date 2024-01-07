@@ -1,0 +1,30 @@
+
+Write a smart contract on a test network, for Bank account of a customer
+for following operations:
+● Deposit money
+● Withdraw Money
+● Show balance
+
+Code :
+// SPDX-License-Identifier: MIT
+// Abhishek Uphade
+pragma solidity ^0.8.0;
+contract Bank_Account
+{
+address payable private account_owner;
+constructor()
+{
+account_owner = payable(msg.sender);
+}
+function deposit() public payable
+{
+}
+function withdraw(uint amount) public payable
+{
+require(msg.sender == account_owner);
+account_owner.transfer(amount);
+}
+function show_balance() public view returns(uint) // View = read-only
+{
+return address(this).balance; //Amount stored in the contract
+}}
